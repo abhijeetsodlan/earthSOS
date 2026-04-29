@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-label="Layered green forest illustration">
+  <rect width="800" height="400" fill="#EAF3DE"/>
+  <circle cx="650" cy="80" r="44" fill="#EF9F27"/>
+  <path d="M0 310c90-70 180-80 260-40s160 30 240-20 180-60 300 20v130H0z" fill="#97C459"/>
+  <path d="M0 250l55-90 55 90h-35l45 70H0l45-70H0zm150 20l70-130 70 130h-45l55 90H140l55-90h-45zm230-5l75-145 75 145h-48l58 95H320l58-95h-48zm270-25l65-120 65 120h-42l52 86H610l52-86h-42z" fill="#173404"/>
+  <path d="M0 340h800v60H0z" fill="#3B6D11"/>
+</svg>
