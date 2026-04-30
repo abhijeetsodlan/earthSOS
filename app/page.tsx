@@ -4,6 +4,7 @@ import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider";
 import { CarbonSourcesSinks } from "@/components/sections/CarbonSourcesSinks";
 import { CrisisStats } from "@/components/sections/CrisisStats";
 import { DeforestationMap } from "@/components/sections/DeforestationMap";
+import { EarthTimeMachine } from "@/components/sections/EarthTimeMachine";
 import { ForestsSection } from "@/components/sections/ForestsSection";
 import { FutureGenerationsSection } from "@/components/sections/FutureGenerationsSection";
 import { HeroSection } from "@/components/sections/HeroSection";
@@ -32,6 +33,7 @@ export default function HomePage() {
         <SpeciesCounter />
         <FutureGenerationsSection />
         <MythsVsFacts />
+        <EarthTimeMachine />
         <DeforestationMap />
         <ActionSteps />
       </main>

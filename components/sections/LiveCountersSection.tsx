@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Leaf, TreeDeciduous, Wind } from "lucide-react";
+import { ArrowRight, Leaf, TreeDeciduous, Wind } from "lucide-react";
 import { useMemo } from "react";
 import type { ReactNode } from "react";
 import { useLiveCounter } from "@/hooks/useLiveCounter";
@@ -95,6 +96,13 @@ export const LiveCountersSection = () => {
                 <div className={`h-full rounded-full bg-primary-300 transition-all duration-500 ${speciesProgressClassName}`} />
               </div>
             </div>
+            <Link
+              href="/last-seen"
+              className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-white px-5 text-sm font-semibold text-primary-600 transition hover:bg-primary-100"
+            >
+              View lost species
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
           </CounterCard>
         </div>
 
