@@ -25,6 +25,7 @@ export default function HomePage() {
         <TreeSimulator />
         <QuoteStrip />
         <LiveCountersSection />
+        <EarthTimeMachine />
         <CarbonSourcesSinks />
         <TemperatureChart />
         <CrisisStats />
@@ -33,7 +34,6 @@ export default function HomePage() {
         <SpeciesCounter />
         <FutureGenerationsSection />
         <MythsVsFacts />
-        <EarthTimeMachine />
         <DeforestationMap />
         <ActionSteps />
       </main>
