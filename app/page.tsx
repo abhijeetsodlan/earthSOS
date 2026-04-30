@@ -12,7 +12,6 @@ import { QuoteStrip } from "@/components/sections/QuoteStrip";
 import { SpeciesCounter } from "@/components/sections/SpeciesCounter";
 import { TemperatureChart } from "@/components/sections/TemperatureChart";
 import { ActionSteps } from "@/components/sections/ActionSteps";
-import { CarbonCalculator } from "@/components/features/CarbonCalculator";
 import { TreeSimulator } from "@/components/features/TreeSimulator";
 
 export default function HomePage() {
@@ -24,7 +23,6 @@ export default function HomePage() {
         <TreeSimulator />
         <QuoteStrip />
         <LiveCountersSection />
-        <CarbonCalculator />
         <CarbonSourcesSinks />
         <TemperatureChart />
         <CrisisStats />

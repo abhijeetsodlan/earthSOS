@@ -51,12 +51,17 @@ export interface TreeEntry {
 
 export interface CarbonInputs {
   kmDrivenPerWeek: number;
+  publicTransitKmPerWeek: number;
   bikeKmPerWeek: number;
-  flightsPerYear: number;
+  shortFlightsPerYear: number;
+  longFlightsPerYear: number;
   electricityKwhPerMonth: number;
+  householdSize: number;
   heatingType: "gas" | "electric" | "none";
+  renewableElectricity: "none" | "partial" | "mostly";
   dietType: "vegan" | "vegetarian" | "omnivore" | "heavy-meat";
   shoppingFrequency: "rarely" | "monthly" | "weekly";
+  wasteLevel: "low" | "average" | "high";
 }
 
 export interface CarbonBreakdown {

@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Leaf, Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
@@ -24,14 +26,15 @@ export const Navbar = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActive(`#${entry.target.id}`);
+            setActive(`/#${entry.target.id}`);
           }
         });
       },
       { rootMargin: "-35% 0px -55% 0px" }
     );
-    NAV_LINKS.filter((link) => link.href.startsWith("#")).forEach((link) => {
-      const node = document.querySelector(link.href);
+    NAV_LINKS.filter((link) => link.href.includes("#")).forEach((link) => {
+      const hash = link.href.slice(link.href.indexOf("#"));
+      const node = document.querySelector(hash);
       if (node) {
         observer.observe(node);
       }
@@ -58,7 +61,7 @@ export const Navbar = () => {
             <Link
               key={link.href}
               href={link.href}
-              className={cn("min-h-11 py-3 text-sm font-semibold text-neutral-600 hover:text-primary-400", active === link.href && "text-primary-300")}
+              className={cn("min-h-11 py-3 text-sm font-semibold text-neutral-600 hover:text-primary-400", (active === link.href || pathname === link.href) && "text-primary-300")}
             >
               {link.label}
             </Link>

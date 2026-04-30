@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronDown, ChevronUp, Sprout, TreeDeciduous } from "lucide-react";
+import { ChevronDown, ChevronUp, TreeDeciduous } from "lucide-react";
 import { useState } from "react";
 import type { ReactNode } from "react";
 import { useLiveCounter } from "@/hooks/useLiveCounter";
@@ -9,7 +9,6 @@ import { useLiveCounter } from "@/hooks/useLiveCounter";
 export const StickyTreeCounter = () => {
   const [collapsed, setCollapsed] = useState(false);
   const treesCut = useLiveCounter(475.65, 200, "day");
-  const treesPlanted = useLiveCounter(57.08, 500, "day");
 
   return (
     <motion.aside
@@ -31,7 +30,6 @@ export const StickyTreeCounter = () => {
       {collapsed ? (
         <div className="flex items-center gap-2 pr-5">
           <span className="h-2.5 w-2.5 rounded-full bg-red-500" />
-          <span className="h-2.5 w-2.5 rounded-full bg-primary-300" />
         </div>
       ) : (
         <div className="space-y-2 pr-4">
@@ -40,13 +38,6 @@ export const StickyTreeCounter = () => {
             label="Trees cut today"
             value={treesCut.formatted}
             valueClassName="text-red-500"
-          />
-          <div className="border-t border-neutral-100" />
-          <CounterRow
-            icon={<Sprout className="h-4 w-4 text-primary-300" aria-hidden="true" />}
-            label="Trees planted today"
-            value={treesPlanted.formatted}
-            valueClassName="text-primary-300"
           />
           <p className="text-center text-[9px] leading-none text-neutral-500">live estimates</p>
         </div>

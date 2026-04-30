@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Calculator } from "lucide-react";
 import { motion } from "framer-motion";
 import { climateService } from "@/services/climateService";
 import { Badge } from "@/components/ui/Badge";
@@ -47,6 +47,9 @@ export const HeroSection = () => {
           <motion.div variants={stagger} custom={3} initial="hidden" animate="show" className="mt-7 flex flex-col gap-3 sm:flex-row sm:justify-center md:justify-start">
             <Link href="#crisis" className="inline-flex min-h-11 items-center justify-center gap-2 rounded bg-primary-300 px-5 py-3 font-bold text-white">
               Explore the crisis <ArrowDown className="h-4 w-4" aria-hidden />
+            </Link>
+            <Link href="/calculator" className="inline-flex min-h-11 items-center justify-center gap-2 rounded border border-primary-200 px-5 py-3 font-bold text-white transition hover:bg-primary-500">
+              Calculate footprint <Calculator className="h-4 w-4" aria-hidden />
             </Link>
           </motion.div>
         </div>

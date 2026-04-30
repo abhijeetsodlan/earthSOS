@@ -5,12 +5,17 @@ import type { CarbonBreakdown, CarbonInputs } from "@/types";
 
 const initialInputs: CarbonInputs = {
   kmDrivenPerWeek: 120,
+  publicTransitKmPerWeek: 40,
   bikeKmPerWeek: 20,
-  flightsPerYear: 1,
+  shortFlightsPerYear: 1,
+  longFlightsPerYear: 0,
   electricityKwhPerMonth: 250,
+  householdSize: 3,
   heatingType: "gas",
+  renewableElectricity: "none",
   dietType: "omnivore",
-  shoppingFrequency: "monthly"
+  shoppingFrequency: "monthly",
+  wasteLevel: "average"
 };
 
 const dietTonnes: Record<CarbonInputs["dietType"], number> = {
@@ -32,14 +37,34 @@ const heatingTonnes: Record<CarbonInputs["heatingType"], number> = {
   none: 0
 };
 
+const renewableMultiplier: Record<CarbonInputs["renewableElectricity"], number> = {
+  none: 1,
+  partial: 0.65,
+  mostly: 0.25
+};
+
+const wasteTonnes: Record<CarbonInputs["wasteLevel"], number> = {
+  low: 0.2,
+  average: 0.45,
+  high: 0.8
+};
+
 export const useCarbonCalc = () => {
   const [inputs, setInputs] = useState<CarbonInputs>(initialInputs);
 
   const results = useMemo(() => {
-    const transport = inputs.kmDrivenPerWeek * 52 * 0.000192 + inputs.bikeKmPerWeek * 52 * 0.000021 + inputs.flightsPerYear * 0.42;
-    const home = inputs.electricityKwhPerMonth * 12 * 0.00035 + heatingTonnes[inputs.heatingType];
+    const householdSize = Math.max(inputs.householdSize, 1);
+    const transport = (
+      inputs.kmDrivenPerWeek * 52 * 0.000192 +
+      inputs.publicTransitKmPerWeek * 52 * 0.000089 +
+      inputs.bikeKmPerWeek * 52 * 0.000021 +
+      inputs.shortFlightsPerYear * 0.28 +
+      inputs.longFlightsPerYear * 1.6
+    );
+    const electricity = inputs.electricityKwhPerMonth * 12 * 0.00035 * renewableMultiplier[inputs.renewableElectricity];
+    const home = (electricity + heatingTonnes[inputs.heatingType]) / householdSize;
     const food = dietTonnes[inputs.dietType];
-    const shopping = shoppingTonnes[inputs.shoppingFrequency];
+    const shopping = shoppingTonnes[inputs.shoppingFrequency] + wasteTonnes[inputs.wasteLevel];
     const breakdown: CarbonBreakdown[] = [
       { name: "Transport", value: transport },
       { name: "Home", value: home },
