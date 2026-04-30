@@ -5,6 +5,7 @@ import { CarbonSourcesSinks } from "@/components/sections/CarbonSourcesSinks";
 import { CrisisStats } from "@/components/sections/CrisisStats";
 import { DeforestationMap } from "@/components/sections/DeforestationMap";
 import { ForestsSection } from "@/components/sections/ForestsSection";
+import { FutureGenerationsSection } from "@/components/sections/FutureGenerationsSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { LiveCountersSection } from "@/components/sections/LiveCountersSection";
 import { MythsVsFacts } from "@/components/sections/MythsVsFacts";
@@ -29,6 +30,7 @@ export default function HomePage() {
         <ForestsSection />
         <BeforeAfterSlider />
         <SpeciesCounter />
+        <FutureGenerationsSection />
         <MythsVsFacts />
         <DeforestationMap />
         <ActionSteps />
